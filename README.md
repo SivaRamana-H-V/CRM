@@ -1,62 +1,83 @@
 # Flutter CRM Task
 
-A modern CRM (Customer Relationship Management) application built with Flutter, featuring customer management, real-time messaging, and VoIP call simulation.
+A modern CRM (Customer Relationship Management) application built with Flutter, featuring customer management, real-time messaging, and VoIP calling capabilities.
 
-## Features
+## Screenshots
 
-### Core Features
-- **Customer Management**
-  - List, add, edit, and delete customers
-  - Search and filter customers
-  - Local storage using Hive
-  - Status tracking (Active/Inactive)
+### Customer Management & Messaging
+<div style="display: flex; gap: 10px;">
+<img src="screenshots/customer.jpeg" width="200" alt="Customer Management">
+<img src="screenshots/chat.jpeg" width="200" alt="Chat Interface">
+</div>
 
-- **Messaging Module**
-  - WhatsApp-like chat interface
-  - Real-time messaging simulation
-  - Message delivery status indicators
-  - Timestamps and read receipts
+### Call Features
+<div style="display: flex; gap: 10px;">
+<img src="screenshots/call_logs.jpeg" width="200" alt="Call Logs">
+<img src="screenshots/call.jpeg" width="200" alt="Active Call">
+</div>
 
-- **VoIP Call Simulation**
-  - Call screen with mute and speaker options
-  - Call duration tracking
-  - Call history with detailed logs
-  - Simulated incoming/outgoing calls
+### Navigation
+<img src="screenshots/drawer.jpeg" width="200" alt="Navigation Drawer">
 
-- **Authentication**
-  - Role-based access (Admin/Agent)
-  - Secure login system
-  - User session management
+## Implemented Features
+
+### Customer Management
+- ✅ Add, edit, and delete customer profiles
+- ✅ Search functionality for customers
+- ✅ Toggle customer status (active/inactive)
+- ✅ Customer details including name, email, and phone
+- ✅ Contact synchronization with device contacts
+
+### Communication Features
+- ✅ Real-time messaging interface
+- ✅ VoIP calling with WebRTC integration
+- ✅ Call controls (mute, speaker)
+- ✅ Call duration tracking
+- ✅ Call history and logs
+- ✅ Message delivery status and timestamps
 
 ### UI/UX Features
-- Modern, clean design
-- Responsive layout for both mobile and tablet
-- Bottom navigation for quick access
-- Navigation drawer with additional options
-- Dark/light theme support
+- ✅ Modern Material Design 3 interface
+- ✅ Bottom navigation for main features
+- ✅ Navigation drawer for additional options
+- ✅ Responsive layout
+- ✅ Clean and intuitive design
 
-## Technical Details
+## Technical Implementation
 
 ### Architecture
-- Clean Architecture pattern
-- Separation of concerns (data, domain, presentation layers)
-- State management using Riverpod
-- Local storage with Hive
+The project follows Clean Architecture principles with three main layers:
 
-### Dependencies
-- `flutter_riverpod`: State management
-- `hive`: Local storage
-- `intl`: Internationalization and formatting
-- `firebase_core` & `cloud_firestore`: Backend services
-- `uuid`: Unique ID generation
-- `shared_preferences`: Local settings storage
-- `google_fonts`: Custom typography
+1. **Domain Layer**
+   - Business entities
+   - Repository interfaces
+   - Use cases
 
-## Getting Started
+2. **Data Layer**
+   - Repository implementations
+   - Data models
+   - Local and remote data sources
+   - WebRTC service implementation
+
+3. **Presentation Layer**
+   - Screens and widgets
+   - State management using Riverpod
+   - UI components
+
+### Key Technologies & Libraries
+- **State Management**: Riverpod for reactive and testable state management
+- **WebRTC**: flutter_webrtc for VoIP calling features
+- **Local Storage**: Hive for efficient local data storage
+- **Contact Management**: contacts_service for device contact integration
+- **Permissions**: permission_handler for managing system permissions
+- **Backend Integration**: Firebase/Firestore for real-time features
+
+## Project Setup
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/flutter_crm_task.git
+git clone https://github.com/SivaRamana-H-V/CRM.git
+cd CRM
 ```
 
 2. Install dependencies
@@ -64,44 +85,66 @@ git clone https://github.com/yourusername/flutter_crm_task.git
 flutter pub get
 ```
 
-3. Run the app
+3. Setup Android permissions (already configured in this repo):
+- WebRTC permissions
+- Contact permissions
+- Internet permissions
+
+4. Run the application
 ```bash
 flutter run
 ```
 
-### Demo Credentials
-- Admin:
-  - Email: admin@crm.com
-  - Password: admin123
-- Agent:
-  - Email: agent@crm.com
-  - Password: agent123
+## Architecture Decisions
 
-## Project Structure
+### 1. State Management
+- Chose **Riverpod** for its:
+  - Testability and maintainability
+  - Type safety
+  - Dependency injection capabilities
+  - Provider composition
+
+### 2. WebRTC Implementation
+- Implemented using flutter_webrtc
+- Clean separation between UI and business logic
+- Proper resource cleanup and state management
+- Error handling and fallback mechanisms
+
+### 3. Contact Integration
+- Two-way sync between app and device contacts
+- Permission handling
+- Efficient data conversion and storage
+
+### 4. Code Organization
 ```
 lib/
-├── data/
-│   ├── models/
-│   │   └── repositories/
-│   └── datasources/
 ├── domain/
-│   ├── entities/
-│   └── repositories/
-├── presentation/
-│   ├── screens/
-│   ├── widgets/
-│   └── providers/
-└── core/
-    └── theme/
+│   ├── entities/         # Business objects
+│   └── repositories/     # Abstract repositories
+├── data/
+│   ├── models/          # Data models
+│   ├── repositories/    # Repository implementations
+│   └── services/        # WebRTC and other services
+└── presentation/
+    ├── screens/         # UI screens
+    ├── widgets/         # Reusable widgets
+    └── providers/       # State management
 ```
 
 ## Future Improvements
-- [ ] Implement actual WebRTC for real VoIP calls
-- [ ] Add push notifications
-- [ ] Integrate with a real backend service
-- [ ] Add analytics dashboard
-- [ ] Implement file sharing in chat
-- [ ] Add voice messages support
-- [ ] Create customer pipeline view
-- [ ] Add contact sync feature
-- [ ] Implement data export (PDF/CSV)
+
+- [ ] Add video call support
+- [ ] Implement push notifications
+- [ ] Add group calling features
+- [ ] Enhance call quality metrics
+- [ ] Add call recording capability
+- [ ] Implement end-to-end encryption
+- [ ] Add file sharing in chat
+- [ ] Create comprehensive analytics dashboard
+
+## Notes
+
+- The app uses simulated data for demonstration purposes
+- WebRTC implementation focuses on audio calls (but simulation only)
+- Contact sync requires appropriate permissions (but not show on UI)
+- Tested on Android (minimum SDK 21)
