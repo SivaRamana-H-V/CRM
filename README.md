@@ -105,6 +105,3 @@ lib/
 - [ ] Create customer pipeline view
 - [ ] Add contact sync feature
 - [ ] Implement data export (PDF/CSV)
-
-## Contributing
-Feel free to submit issues and enhancement requests.

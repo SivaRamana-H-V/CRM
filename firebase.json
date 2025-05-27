@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"onesignal-748dd","appId":"1:789967368163:android:5d950267ccb67832433ad6","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"onesignal-748dd","configurations":{"android":"1:789967368163:android:5d950267ccb67832433ad6","ios":"1:789967368163:ios:4505e611413d6d18433ad6"}}}}}}
